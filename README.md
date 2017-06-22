@@ -54,5 +54,5 @@ IDE推荐使用PyCharm。
 
 >注意：配置MySQL信息。
 
-
+![mysql数据](movieSpider/images/movie_1.png)
 
