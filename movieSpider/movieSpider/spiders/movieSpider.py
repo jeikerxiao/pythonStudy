@@ -2,6 +2,8 @@ import scrapy
 from lxml import etree
 from scrapy.http import Request
 from movieSpider.items import MovieSpiderItem
+# from movieSpider.movieSpider.pipeLine.MySQLPipeline import MySQLPipeline
+# from ..pipeLine.MySQLPipeline import MySQLPipeline
 
 
 class Myspider(scrapy.Spider):

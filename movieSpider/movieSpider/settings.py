@@ -64,8 +64,12 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
+# 分配给每个类的整型值，确定了他们运行的顺序，item按数字从低到高的顺序，通过pipeline，通常将这些数字定义在0-1000范围内。
 ITEM_PIPELINES = {
-   'movieSpider.pipelines.MoviespiderPipeline': 300,
+   # 'movieSpider.pipelines.MoviespiderPipeline': 300,
+   # 'movieSpider.pipeline.JsonWriterPipeline.JsonWriterPipeline': 400,
+   # 'movieSpider.pipeline.MongoPipeline.MongoPipeline': 500,
+   'movieSpider.pipeLine.MySQLPipeline.MySQLPipeline': 600,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

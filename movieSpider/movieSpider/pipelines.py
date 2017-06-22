@@ -7,6 +7,12 @@
 
 
 class MoviespiderPipeline(object):
+    """
+    *清理HTML数据
+    *验证爬取的数据(检查item包含某些字段)
+    *查重(并丢弃)
+    *将爬取结果保存到数据库中    
+    """
     def process_item(self, item, spider):
         print(item['name'])
         return item
