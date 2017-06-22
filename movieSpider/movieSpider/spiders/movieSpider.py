@@ -38,6 +38,8 @@ class Myspider(scrapy.Spider):
                 quote_tag = item.xpath('.//div[@class="bd"]//span[@class="inq"]')
                 if len(quote_tag) is not 0:
                     save_item['quote'] = quote_tag[0].text.encode('gb2312', 'ignore').decode('gb2312').replace('\xa0', '')
+                else:
+                    save_item['quote'] = ''
                 # 输出 排名，评分，简介
                 # print(rank, rating_num, quote)
                 # 输出 中文名，英文名
