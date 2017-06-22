@@ -56,3 +56,10 @@ IDE推荐使用PyCharm。
 
 ![mysql数据](movieSpider/images/movie_1.png)
 
+### tag v0.0.3
+
+输出排名前250位评分的电影信息到Txt,Excel,MongoDB数据库进行存储。
+
+>注意：在settings.py文件中配置MongoDB信息。
+
+![mysql数据](movieSpider/images/movie_2.png)
