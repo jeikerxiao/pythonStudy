@@ -22,7 +22,7 @@ class UuspiderPipeline(ImagesPipeline):
 
     def file_path(self, request, response=None, info=None):
         item = request.meta['item']
-        # 从URL提取图片的文件名
+        # 从item中提取图片的文件名
         image_guid = request.url.split('/')[-1]
         filename = u'images'+u'/{0[title]}/{1}'.format(item, image_guid)
         return filename

@@ -3,6 +3,7 @@ from lxml import etree
 from scrapy.http import Request
 from uuSpider.items import UuspiderItem
 
+
 class QuanjiSpider(scrapy.Spider):
 
     name = 'uuSpider'
@@ -18,7 +19,7 @@ class QuanjiSpider(scrapy.Spider):
     # FormRequeset
     def post_login(self, response):
         print('Preparing login')
-        # 下面这句话用于抓取请求网页后返回网页中的_xsrf字段的文字, 用于成功提交表单
+        # 下面这句代码用于抓取请求网页后返回网页中的 formhash 字段的值, 用于成功提交表单
         formhash = response.xpath('//input[@name="formhash"]/@value').extract()[0]
         print(formhash)
         # FormRequeset.from_response是Scrapy提供的一个函数, 用于post表单
@@ -32,17 +33,18 @@ class QuanjiSpider(scrapy.Spider):
                                               'password': '密码',
                                               'questionid': '0',
                                               'cookietime': '12592000',
-
                                           },
                                           callback=self.after_login
                                           )]
 
+    # 登录成功后，进入列表分页
     def after_login(self, response):
         print('login success')
         for id in range(1, 41, 1):
             url = 'http://www.uu.com/forumdisplay.php?fid=5&page=' + str(id)
             yield Request(url, headers=self.headers, callback=self.parse)
 
+    # 解析列表分页上的标题、日期、内容页跳转连接
     def parse(self, response):
         # 将request.content 转化为 Element
         root = etree.HTML(response.text)
@@ -60,6 +62,7 @@ class QuanjiSpider(scrapy.Spider):
             yield Request(content_url, headers=self.headers, callback=self.parseImage, meta={'title': title_str,
                                                                                              'date': date_str})
 
+    # 解析内容页上的 图片url , 传入item。
     def parseImage(self, response):
         title = response.meta['title']
         date = response.meta['date']
