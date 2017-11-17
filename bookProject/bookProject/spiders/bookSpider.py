@@ -18,7 +18,7 @@ class BookspiderSpider(scrapy.Spider):
 
     # 开始爬取列表页
     def start_requests(self):
-        for page_num in range(1, 2, 1):
+        for page_num in range(1, 33, 1):
             # 爬取路由规则
             url = 'http://www.tuzigh.com/forum/299653{id}171299380/6{tid}' + str(page_num) + '0178299/6897{name}.html'
             yield Request(url=url, headers=self.headers, callback=self.parse)
@@ -29,7 +29,7 @@ class BookspiderSpider(scrapy.Spider):
         for title_item in title_items:
             title = title_item.xpath("./a/text()").extract_first()
             base_url = title_item.xpath("./a/@href").extract_first()
-            content_url = base_url + '?_dsign=ed572c97'
+            content_url = base_url
             print(title)
             print(content_url)
             yield Request(url=content_url, headers=self.headers, callback=self.content_parse)
