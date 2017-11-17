@@ -65,9 +65,11 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'bookProject.pipelines.BookprojectPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'bookProject.pipelines.BookprojectPipeline': 300,
+    'bookProject.pipelines.TxtPipeline': 299,
+    'bookProject.pipelines.JsonPipeline': 298,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
