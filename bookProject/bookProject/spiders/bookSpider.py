@@ -36,9 +36,6 @@ class BookspiderSpider(scrapy.Spider):
 
     # 解析内容页
     def content_parse(self, response):
-        # if ".html" in response.url:
-        #     from scrapy.shell import inspect_response
-        #     inspect_response(response, self)
         # 解析标题信息
         title_str = response.xpath("//span[@id='thread_subject']/text()").extract_first()
         mp4_url = response.xpath("//div[@id='postlist']//audio/source/@src").extract_first()
