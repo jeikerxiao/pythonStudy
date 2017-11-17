@@ -11,4 +11,6 @@ import scrapy
 class BookprojectItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    # 标题和连接
+    title = scrapy.Field()
+    url = scrapy.Field()
