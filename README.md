@@ -2,6 +2,27 @@
 
 学习python过程中，记录下的工程项目。
 
+# Scrapy简单使用
+
+## 1. 创建工程
+
+```shell
+scrapy startproject meiwenProject
+```
+
+## 2. 创建Spider
+
+```
+cd meiwenProject
+```
+
+```
+scrapy genspider -t basic meiwenSpider meiriyiwen.com
+```
+
+
+
+
 # 1.movieSpider
 
 这个项目是一个爬取豆瓣电影排名前250部电影的简介。
