@@ -11,4 +11,10 @@ import scrapy
 class MeiwenprojectItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    title = scrapy.Field()
+    author = scrapy.Field()
+    date = scrapy.Field()
+    anchor = scrapy.Field()
+    url = scrapy.Field()
+    content = scrapy.Field()
     pass

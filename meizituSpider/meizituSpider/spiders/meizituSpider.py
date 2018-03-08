@@ -15,7 +15,7 @@ class MeizituSpider(CrawlSpider):
         Rule(LinkExtractor(allow='http://www.meizitu.com/a/list_1_\d\.html'), callback='parse_item', follow=True)
     ]
 
-    def parse_item(self,response):
+    def parse_item(self, response):
         sel = Selector(response)
         for_xijie = sel.xpath('//ul[@class="wp-list clearfix"]/li')
         for yige in for_xijie:
@@ -23,7 +23,7 @@ class MeizituSpider(CrawlSpider):
             request = scrapy.Request(xijieurl, callback=self.parse_xijie)
             yield request
 
-    def parse_xijie(self,response):
+    def parse_xijie(self, response):
         sel = Selector(response)
         item = MeizituspiderItem()
         rawdate1 = sel.xpath('//div[@class="month_Year"]/text()').extract()[0]
@@ -35,4 +35,4 @@ class MeizituSpider(CrawlSpider):
             item['date'] = date
             item['title'] = title
             item['image_urls'] = [yige.xpath('./@src').extract()[0]]
-            yield  item
+            yield item
