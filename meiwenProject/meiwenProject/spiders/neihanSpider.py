@@ -2,6 +2,7 @@
 import scrapy
 from scrapy.http import Request
 from meiwenProject.items import MeiwenprojectItem
+from lxml import etree
 
 
 class NeihanspiderSpider(scrapy.Spider):
@@ -23,7 +24,7 @@ class NeihanspiderSpider(scrapy.Spider):
         for item in items:
             save_item = MeiwenprojectItem()
             save_item['author'] = item.xpath(".//div[@class='name-time-wrapper left']/span[@class='name']/text()").extract_first()
-            save_item['date'] = item.xpath(".//div[@class='name-time-wrapper left']/span[@class='time']/text()").extract_first()
-            save_item['content'] = item.xpath(".//div[@class='upload-txt  no-mb']/h1[@class='title']/p/text()").extract_first()
+            save_item['date'] = item.xpath(".//span[@class='time']/text()").extract_first()
+            save_item['content'] = item.xpath(".//h1[@class='title']/p/text()").extract_first()
             yield save_item
             pass
